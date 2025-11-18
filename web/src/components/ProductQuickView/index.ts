@@ -1,0 +1,1 @@
+export { ProductQuickView } from './ProductQuickView';
