@@ -3,63 +3,246 @@ import { Box, Typography } from '@mui/material';
 // Plant layout grid with category images
 export function PlantLayout() {
   const categories = [
-    { id: 'planta1', label: 'Tamanhos', image: '/src/assets/img/vasos/filtros-plantas/planta1.jpg', area: 'a', height: '56vh', width: '32vw' },
-    { id: 'planta2', label: 'Estética', image: '/src/assets/img/vasos/filtros-plantas/planta3.jpg', area: 'b', height: '25vh', width: '24vw' },
-    { id: 'planta3', label: 'Simplicidade', image: '/src/assets/img/vasos/filtros-plantas/planta2.jpg', area: 'c', height: '25vh', width: '22vw' },
-    { id: 'planta4', label: 'Para Escritório', image: '/src/assets/img/vasos/filtros-plantas/planta4.jpg', area: 'd', height: '28vh', width: '27vw' },
-    { id: 'planta5', label: 'Decorativas', image: '/src/assets/img/vasos/filtros-plantas/planta5.jpg', area: 'e', height: '28vh', width: '20vw' },
+    { id: 'planta1', label: 'Tamanhos', image: '/assets/img/vasos/filtros-plantas/planta1.jpg' },
+    { id: 'planta2', label: 'Estética', image: '/assets/img/vasos/filtros-plantas/planta3.jpg' },
+    { id: 'planta3', label: 'Simplicidade', image: '/assets/img/vasos/filtros-plantas/planta2.png' },
+    { id: 'planta4', label: 'Para Escritório', image: '/assets/img/vasos/filtros-plantas/planta4.jpg' },
+    { id: 'planta5', label: 'Decorativas', image: '/assets/img/vasos/filtros-plantas/planta5.jpg' },
   ];
 
   return (
     <Box 
       sx={{ 
-        display: 'grid',
-        gridTemplateAreas: `
-          "a b c"
-          "a d e"
-        `,
-        width: '75%',
-        height: 'auto',
-        placeItems: 'center',
-        gap: 1.25
+        width: { xs: '90%', md: '90%', lg: '88%', xl: '85%' },
+        maxWidth: '1400px',
+        margin: '20px auto 50px',
+        padding: '0 20px',
       }}
     >
-      {categories.map((category) => (
+      {/* Grid masonry style */}
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gridTemplateRows: { xs: 'repeat(2, 200px)', md: 'repeat(2, 240px)', lg: 'repeat(2, 260px)' },
+          gap: '15px',
+        }}
+      >
+        {/* Tamanhos - ocupa 2 linhas e 1 coluna */}
         <Box
-          key={category.id}
           sx={{
-            gridArea: category.area,
-            width: category.width,
-            height: category.height,
-            backgroundImage: `url(${category.image})`,
+            gridColumn: '1 / 2',
+            gridRow: '1 / 3',
+            backgroundImage: `url(${categories[0].image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            borderRadius: '5px',
+            borderRadius: '8px',
             display: 'flex',
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
             cursor: 'pointer',
-            transition: 'transform 0.3s ease',
-            '&:hover': {
-              transform: 'scale(1.02)'
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%)',
             }
           }}
         >
           <Typography 
             variant="body1" 
             sx={{ 
-              fontSize: 18,
+              fontSize: 20,
               fontFamily: 'Montserrat, sans-serif',
-              fontWeight: 300,
+              fontWeight: 400,
               color: 'white',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
-              m: 2
+              textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+              m: 2.5,
+              position: 'relative',
+              zIndex: 1,
             }}
           >
-            {category.label}
+            {categories[0].label}
           </Typography>
         </Box>
-      ))}
+
+        {/* Estética - menor, ocupa menos colunas na linha 1 */}
+        <Box
+          sx={{
+            gridColumn: '2 / 3',
+            gridRow: '1 / 2',
+            backgroundImage: `url(${categories[1].image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            cursor: 'pointer',
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%)',
+            }
+          }}
+        >
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              fontSize: 20,
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 400,
+              color: 'white',
+              textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+              m: 2.5,
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {categories[1].label}
+          </Typography>
+        </Box>
+
+        {/* Simplicidade - maior, ocupa 2 colunas na linha 1 */}
+        <Box
+          sx={{
+            gridColumn: '3 / 5',
+            gridRow: '1 / 2',
+            backgroundImage: `url(${categories[2].image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            cursor: 'pointer',
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%)',
+            }
+          }}
+        >
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              fontSize: 20,
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 400,
+              color: 'white',
+              textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+              m: 2.5,
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {categories[2].label}
+          </Typography>
+        </Box>
+
+        {/* Para Escritório - maior, ocupa 2 colunas na linha 2 */}
+        <Box
+          sx={{
+            gridColumn: '2 / 4',
+            gridRow: '2 / 3',
+            backgroundImage: `url(${categories[3].image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            cursor: 'pointer',
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%)',
+            }
+          }}
+        >
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              fontSize: 20,
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 400,
+              color: 'white',
+              textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+              m: 2.5,
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {categories[3].label}
+          </Typography>
+        </Box>
+
+        {/* Decorativas - menor, ocupa 1 coluna na linha 2 */}
+        <Box
+          sx={{
+            gridColumn: '4 / 5',
+            gridRow: '2 / 3',
+            backgroundImage: `url(${categories[4].image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            borderRadius: '8px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
+            cursor: 'pointer',
+            position: 'relative',
+            overflow: 'hidden',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 50%)',
+            }
+          }}
+        >
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              fontSize: 20,
+              fontFamily: 'Montserrat, sans-serif',
+              fontWeight: 400,
+              color: 'white',
+              textShadow: '2px 2px 6px rgba(0,0,0,0.8)',
+              m: 2.5,
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            {categories[4].label}
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 }

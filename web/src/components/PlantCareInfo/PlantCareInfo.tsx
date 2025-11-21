@@ -1,65 +1,61 @@
-import { Box, Typography, Button } from '@mui/material';
+'use client';
 
-// Plant care info section
+import { Box } from '@mui/material';
+
 export function PlantCareInfo() {
   return (
-    <Box 
-      sx={{ 
+    <Box
+      sx={{
         width: '100%',
+        padding: '40px 20px 0px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        mt: 3
+        backgroundColor: 'white',
+        marginTop: '30px',
       }}
     >
-      <Box sx={{ mb: 2 }}>
-        <Box 
-          component="img" 
-          src="/src/assets/img/icones/vaso-de-plantas.png" 
-          alt="Vaso de Planta"
-          sx={{ width: 100, height: 100 }}
-        />
+      <Box
+        component="h2"
+        sx={{
+          fontFamily: "'Montserrat', sans-serif !important",
+          fontSize: { xs: '28px', md: '36px' },
+          fontWeight: '600 !important',
+          color: '#000000 !important',
+          margin: '0 !important',
+          marginBottom: '8px !important',
+          lineHeight: '1.2 !important',
+          textAlign: 'center',
+        }}
+      >
+        Explore Nossas Plantas
       </Box>
-      
-      <Typography 
-        variant="h6" 
-        sx={{ 
+
+      <Box
+        component="p"
+        sx={{
+          fontFamily: "'Montserrat', sans-serif !important",
+          fontSize: { xs: '18px', md: '22px' },
+          fontWeight: '300 !important',
+          color: '#518432 !important',
+          margin: '0 !important',
+          marginBottom: '12px !important',
           textAlign: 'center',
-          pt: 0.625,
-          fontSize: 18,
-          width: '100%'
+          letterSpacing: '0.5px',
         }}
       >
-        A IMPORTÂNCIA DOS CUIDADOS ESSENCIAIS NA CULTIVAÇÃO DE PLANTAS SAUDÁVEIS
-      </Typography>
-      
-      <Typography 
-        variant="body1" 
-        sx={{ 
-          width: { xs: '90%', md: 1000 },
-          textAlign: 'center',
-          pt: 0.625
+        Encontre a planta ideal para cada ambiente
+      </Box>
+
+      <Box
+        sx={{
+          width: '80px',
+          height: '2px',
+          backgroundColor: '#47941a',
+          borderRadius: '1px',
+          marginBottom: '15px',
         }}
-      >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur ullam minima rerum eius quisquam
-        quaerat illo quis explicabo! Consequatur laborum ad nihil veritatis, molestias voluptatibus earum
-        unde veniam neque aspernatur
-      </Typography>
-      
-      <Button 
-        variant="contained"
-        color="primary"
-        sx={{ 
-          width: 150,
-          height: 40,
-          borderRadius: '30px',
-          fontSize: 15,
-          mt: 3
-        }}
-      >
-        Ler Mais
-      </Button>
+      />
     </Box>
   );
 }

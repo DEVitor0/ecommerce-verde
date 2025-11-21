@@ -6,15 +6,14 @@ interface SectionTitleProps {
   highlightColor?: 'primary' | 'success';
 }
 
-// Section title component - usado em varias secoes
 export function SectionTitle({ title, subtitle, highlightColor = 'primary' }: SectionTitleProps) {
   return (
     <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', mt: 3 }}>
-      <Typography variant="h4" sx={{ fontFamily: 'Montserrat, sans-serif', fontSize: 32, textAlign: 'center' }}>
+      <Typography variant="h4" sx={{ fontFamily: 'Montserrat, sans-serif !important', fontSize: '32px !important', fontWeight: '600 !important', textAlign: 'center', color: '#000 !important' }}>
         {title}
       </Typography>
       {subtitle && (
-        <Typography variant="h6" sx={{ fontFamily: 'Montserrat, sans-serif', fontSize: 22, color: highlightColor === 'success' ? 'success.main' : 'primary.dark', textAlign: 'center' }}>
+        <Typography variant="h6" sx={{ fontFamily: 'Montserrat, sans-serif !important', fontSize: '22px !important', fontWeight: '300 !important', color: '#518432 !important', textAlign: 'center' }}>
           {subtitle}
         </Typography>
       )}
