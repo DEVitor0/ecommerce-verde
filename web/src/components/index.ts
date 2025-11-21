@@ -1,6 +1,10 @@
+export { NavBar } from './NavBar';
+export { FilterBar } from './FilterBar';
+export { Carousel } from './Carousel';
 export { SectionTitle } from './SectionTitle';
 export { ProductCard } from './ProductCard';
 export { ProductList } from './ProductList';
+export { ProductCarousel } from './ProductCarousel';
 export { PromoBanner } from './PromoBanner';
 export { InfoBar } from './InfoBar';
 export { CategoryBar } from './CategoryBar';
