@@ -3,13 +3,16 @@
 import { Box, Container } from '@mui/material';
 import { useState } from 'react';
 import {
+  NavBar,
+  FilterBar,
+  Carousel,
   PlantCareInfo,
   PlantLayout,
   SectionTitle,
   ProductFilter,
-  ProductList,
   ProductCard,
-  CarouselControls,
+  ProductList,
+  ProductCarousel,
   PromoBanner,
   InfoBar,
   CategoryBar,
@@ -29,13 +32,17 @@ export default function HomePage() {
   const [activeFilter, setActiveFilter] = useState('popular');
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
-  // Mock data for demonstration
   const products = [
-    { id: 1, name: 'Gustemico', price: 48.00, originalPrice: 80.00, discount: 40, image: '/src/assets/img/vasos/produtos-principais/plantaxx.png' },
-    { id: 2, name: 'Sapuyla', price: 20.00, originalPrice: 66.00, discount: 70, image: '/src/assets/img/vasos/produtos-principais/yunn.png' },
-    { id: 3, name: 'Mollapoza', price: 40.00, image: '/src/assets/img/vasos/produtos-principais/planat12-removebg-preview.png' },
-    { id: 4, name: 'Begônia', price: 73.00, image: '/src/assets/img/vasos/produtos-principais/planta8.png' },
-    { id: 5, name: 'Yamullat', price: 25.00, image: '/src/assets/img/vasos/produtos-principais/planta12.png' },
+    { id: 1, name: 'Gustemico', price: 48.00, originalPrice: 80.00, discount: 40, image: '/assets/img/vasos/produtos-principais/plantaxx.png' },
+    { id: 2, name: 'Sapuyla', price: 20.00, originalPrice: 66.00, discount: 70, image: '/assets/img/vasos/produtos-principais/yunn.png' },
+    { id: 3, name: 'Mollapoza', price: 40.00, image: '/assets/img/vasos/produtos-principais/planat12-removebg-preview.png' },
+    { id: 4, name: 'Begônia', price: 73.00, image: '/assets/img/vasos/produtos-principais/planta8.png' },
+    { id: 5, name: 'Yamullat', price: 25.00, image: '/assets/img/vasos/produtos-principais/planta12.png' },
+    { id: 6, name: 'Magnólia', price: 77.00, image: '/assets/img/vasos/produtos-principais/plantaxxx-removebg-preview.png' },
+    { id: 7, name: 'Muzbbestie', price: 30.00, originalPrice: 60.00, discount: 50, image: '/assets/img/vasos/produtos-principais/plantinha.png' },
+    { id: 8, name: 'Yekutsa', price: 90.00, originalPrice: 100.00, discount: 10, image: '/assets/img/vasos/produtos-principais/plantax.png' },
+    { id: 9, name: 'Buedevillo', price: 35.00, image: '/assets/img/vasos/produtos-principais/planta4.png' },
+    { id: 10, name: 'Crisântemo', price: 30.00, image: '/assets/img/vasos/produtos-principais/planta11.webp' },
   ];
 
   const recommendations = [
@@ -43,13 +50,13 @@ export default function HomePage() {
       name: 'Vitor Moreira',
       role: 'Cliente',
       message: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate enim possimus porro laudantium libero repellat provident dolores Doloribus ad, consectetur velit dolor voluptates molestias harum debitis ratione.',
-      image: '/src/assets/img/pessoas/pessoa1.jpg',
+      image: '/assets/img/pessoas/pessoa1.jpg',
     },
     {
       name: 'Maria Silva',
       role: 'Cliente',
       message: 'Excelente serviço e produtos de qualidade. Recomendo para todos que buscam plantas saudáveis e bonitas.',
-      image: '/src/assets/img/pessoas/pessoa2.jpg',
+      image: '/assets/img/pessoas/pessoa2.jpg',
     },
   ];
 
@@ -58,13 +65,13 @@ export default function HomePage() {
       title: 'Alguns Segredos de Beleza e Resistência para plantas',
       excerpt: 'Aenean porta magna, sed odio placerat vehicula feugiat mattis. pretium justo eget luctus ...',
       date: '18 Mar, 2024',
-      image: '/src/assets/img/fundos/fundo3-blog.jpeg',
+      image: '/assets/img/fundos/fundo3-blog.jpeg',
     },
     {
       title: 'Detalhes que afetam o desenvolvimento das plantas',
       excerpt: 'Viver augue vitae, est eros vehicula tincidunt pulvinar. In, dictum magna sed eros ...',
       date: '23 Fev, 2024',
-      image: '/src/assets/img/fundos/fundo2-blog.jpeg',
+      image: '/assets/img/fundos/fundo2-blog.jpeg',
     },
   ];
 
@@ -75,25 +82,27 @@ export default function HomePage() {
 
   return (
     <Box sx={{ bgcolor: 'background.default', minHeight: '100vh' }}>
-      {/* Navigation */}
+      <NavBar 
+        onCartOpen={() => setCartOpen(true)}
+        onLoginClick={() => console.log('Login clicked')}
+        onFavoriteClick={() => console.log('Favorite clicked')}
+      />
 
-      {/* Main content */}
+      <FilterBar />
+
       <Container maxWidth={false} disableGutters>
-        {/* Hero carousel */}
+        <Carousel />
 
-        {/* Plant care section */}
         <PlantCareInfo />
 
-        {/* Plant layout grid */}
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
           <PlantLayout />
         </Box>
 
-        {/* Products section */}
         <SectionTitle title="Produtos Principais" subtitle="Os melhores produtos" />
         <ProductFilter activeFilter={activeFilter} onFilterChange={setActiveFilter} />
         
-        <ProductList>
+        <ProductCarousel>
           {products.map((product) => (
             <ProductCard
               key={product.id}
@@ -105,17 +114,12 @@ export default function HomePage() {
               onQuickView={() => handleQuickView(product)}
             />
           ))}
-        </ProductList>
+        </ProductCarousel>
 
-        <CarouselControls onPrevious={() => {}} onNext={() => {}} />
-
-        {/* Promo banner */}
         <PromoBanner />
 
-        {/* Info bar */}
         <InfoBar />
 
-        {/* Category section */}
         <SectionTitle title="Categoria e Produtos" subtitle="Descubra, Explore e Surpreenda-se" />
         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 4 }}>
           <CategoryBar />
@@ -131,7 +135,6 @@ export default function HomePage() {
           </ProductList>
         </Box>
 
-        {/* Recommendations */}
         <Recommendation items={recommendations} />
 
         {/* Blog section */}
@@ -146,7 +149,6 @@ export default function HomePage() {
       {/* Footer */}
       <Footer />
 
-      {/* Modals and drawers */}
       <Cart open={cartOpen} onClose={() => setCartOpen(false)} />
       <MessageModal
         open={messageModalOpen}
