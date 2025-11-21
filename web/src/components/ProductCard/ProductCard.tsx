@@ -1,7 +1,6 @@
-import { Box, Card, CardMedia, CardContent, Typography, IconButton, Chip } from '@mui/material';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+'use client';
+
+import { Box } from '@mui/material';
 
 interface ProductCardProps {
   name: string;
@@ -14,120 +13,203 @@ interface ProductCardProps {
   onQuickView?: () => void;
 }
 
-// Product card component with hover actions
 export function ProductCard({ name, price, originalPrice, discount, image, onAddToCart, onAddToWishlist, onQuickView }: ProductCardProps) {
   return (
-    <Card 
-      elevation={0}
+    <Box 
+      className="produtos-plantas"
       sx={{ 
-        width: { xs: 220, md: 280 },
-        height: { xs: 320, md: 450 },
-        m: 1.25,
-        display: 'inline-block',
-        position: 'relative',
-        transition: 'all 0.3s ease',
-        '&:hover .product-actions': {
-          opacity: 1,
+        width: '280px !important',
+        height: '450px !important',
+        margin: '10px !important',
+        display: 'inline-block !important',
+        position: 'relative !important',
+        animation: 'slideDireita 0.260s ease forwards',
+        '&:hover': {
+          '& .container-acessórios-produtos .acessórios-produtos': {
+            display: 'block !important',
+          }
         }
       }}
     >
-      {/* Discount badge */}
       {discount && (
-        <Chip 
-          label={`${discount}%`} 
-          size="small"
+        <Box 
+          className="desconto"
           sx={{ 
-            position: 'absolute', 
-            top: 8, 
-            left: 8, 
-            bgcolor: 'warning.main', 
-            color: 'white',
-            fontWeight: 'bold',
-            zIndex: 1
-          }} 
-        />
+            width: '45px !important',
+            padding: '5px !important',
+            borderRadius: '5px !important',
+            backgroundColor: '#F0524B !important',
+            color: 'white !important',
+            textAlign: 'center !important',
+            position: 'absolute !important',
+            fontSize: '15px !important',
+            fontWeight: 'normal !important',
+            zIndex: 1,
+            lineHeight: '1.2 !important',
+          }}
+        >
+          <Box component="p" sx={{ margin: '0 !important' }}>{discount}%</Box>
+        </Box>
       )}
       
-      {/* Product image */}
-      <CardMedia
-        component="img"
-        image={image}
-        alt={name}
-        sx={{ 
-          width: '100%', 
-          height: '75%',
-          objectFit: 'cover'
-        }}
-      />
-      
-      {/* Action buttons on hover */}
       <Box 
-        className="product-actions"
+        className="container-imagens-produtos"
         sx={{ 
-          position: 'absolute',
-          top: '60%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          gap: 2.5,
-          opacity: 0,
-          transition: 'opacity 0.2s ease-in'
+          width: '100% !important', 
+          height: '75% !important',
         }}
       >
-        <IconButton 
-          size="small" 
-          onClick={onAddToCart}
-          sx={{ 
-            bgcolor: 'background.paper', 
-            '&:hover': { bgcolor: 'primary.dark', color: 'white' },
-            borderRadius: '5px',
-            p: 0.625
+        <img 
+          src={image}
+          alt={name}
+          style={{ 
+            width: '100%', 
+            height: '100%',
+            objectFit: 'cover'
           }}
-        >
-          <ShoppingBasketIcon fontSize="small" />
-        </IconButton>
-        <IconButton 
-          size="small"
-          onClick={onAddToWishlist}
-          sx={{ 
-            bgcolor: 'background.paper', 
-            '&:hover': { bgcolor: 'primary.dark', color: 'white' },
-            borderRadius: '5px',
-            p: 0.625
-          }}
-        >
-          <FavoriteBorderIcon fontSize="small" />
-        </IconButton>
-        <IconButton 
-          size="small"
-          onClick={onQuickView}
-          sx={{ 
-            bgcolor: 'background.paper', 
-            '&:hover': { bgcolor: 'primary.dark', color: 'white' },
-            borderRadius: '5px',
-            p: 0.625
-          }}
-        >
-          <VisibilityIcon fontSize="small" />
-        </IconButton>
+        />
       </Box>
       
-      {/* Product info */}
-      <CardContent sx={{ textAlign: 'center' }}>
-        <Typography variant="h6" sx={{ fontSize: 18, fontWeight: 600 }}>
+      <Box 
+        className="container-acessórios-produtos"
+        sx={{ 
+          width: '100% !important',
+          height: '1% !important',
+          display: 'flex !important',
+          justifyContent: 'center !important',
+          alignItems: 'center !important',
+          gap: '20px !important',
+        }}
+      >
+        <Box 
+          className="acessórios-produtos sexta-carrinho"
+          onClick={onAddToCart}
+          sx={{ 
+            display: 'none !important',
+            width: '40px !important',
+            height: '40px !important',
+            borderRadius: '5px !important',
+            padding: '10px !important',
+            textAlign: 'center !important',
+            backgroundColor: 'white !important',
+            position: 'relative !important',
+            top: '-2.5vh !important',
+            cursor: 'pointer !important',
+            justifyContent: 'center !important',
+            alignItems: 'center !important',
+            '&:hover': {
+              backgroundColor: '#47941a !important',
+              color: 'white !important',
+              transition: '0.2s ease-in !important',
+              '& i': {
+                color: 'white !important',
+              }
+            }
+          }}
+        >
+          <i className="fa-solid fa-basket-shopping" style={{ fontSize: '20px' }}></i>
+        </Box>
+        <Box 
+          className="acessórios-produtos"
+          onClick={onAddToWishlist}
+          sx={{ 
+            display: 'none !important',
+            width: '40px !important',
+            height: '40px !important',
+            borderRadius: '5px !important',
+            padding: '10px !important',
+            textAlign: 'center !important',
+            backgroundColor: 'white !important',
+            position: 'relative !important',
+            top: '-2.5vh !important',
+            justifyContent: 'center !important',
+            alignItems: 'center !important',
+            '&:hover': {
+              backgroundColor: '#47941a !important',
+              color: 'white !important',
+              transition: '0.2s ease-in !important',
+            }
+          }}
+        >
+          <i className="fa-regular fa-heart" style={{ fontSize: '20px' }}></i>
+        </Box>
+        <Box 
+          className="acessórios-produtos"
+          onClick={onQuickView}
+          sx={{ 
+            display: 'none !important',
+            width: '40px !important',
+            height: '40px !important',
+            borderRadius: '5px !important',
+            padding: '10px !important',
+            textAlign: 'center !important',
+            backgroundColor: 'white !important',
+            position: 'relative !important',
+            top: '-2.5vh !important',
+            justifyContent: 'center !important',
+            alignItems: 'center !important',
+            '&:hover': {
+              backgroundColor: '#47941a !important',
+              color: 'white !important',
+              transition: '0.2s ease-in !important',
+            }
+          }}
+        >
+          <i className="fa-regular fa-eye" style={{ fontSize: '20px' }}></i>
+        </Box>
+      </Box>
+      
+      <Box 
+        className="container-preço-plantas"
+        sx={{ 
+          width: '100% !important',
+          height: 'auto !important',
+          textAlign: 'center !important',
+          marginTop: '10px !important',
+        }}
+      >
+        <Box 
+          component="h3"
+          sx={{ 
+            fontSize: '18px !important',
+            fontWeight: 'normal !important',
+            marginBottom: '8px !important',
+            margin: '0 0 8px 0 !important',
+            fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important",
+          }}
+        >
           {name}
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Typography variant="body1" sx={{ fontWeight: 'bold' }}>
+        </Box>
+        <Box sx={{ display: 'inline !important' }}>
+          <Box 
+            component="p"
+            sx={{ 
+              display: 'inline !important',
+              marginRight: '8px !important',
+              fontWeight: 'normal !important',
+              fontSize: '16px !important',
+              margin: '0 8px 0 0 !important',
+              fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important",
+            }}
+          >
             R$ {price.toFixed(2)}
-          </Typography>
+          </Box>
           {originalPrice && (
-            <Typography variant="body2" sx={{ textDecoration: 'line-through', color: 'text.secondary' }}>
+            <Box 
+              component="del"
+              sx={{ 
+                display: 'inline !important',
+                textDecoration: 'line-through !important',
+                color: '#AAAAAA !important',
+                fontSize: '14px !important',
+                fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important",
+              }}
+            >
               R$ {originalPrice.toFixed(2)}
-            </Typography>
+            </Box>
           )}
         </Box>
-      </CardContent>
-    </Card>
+      </Box>
+    </Box>
   );
 }

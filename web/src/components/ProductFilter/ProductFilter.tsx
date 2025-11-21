@@ -1,45 +1,53 @@
-import { Box, Button } from '@mui/material';
+'use client';
+
+import { Box } from '@mui/material';
 
 interface ProductFilterProps {
   activeFilter: string;
   onFilterChange: (filter: string) => void;
 }
 
-// Filter buttons for products (Popular, New, Sale)
 export function ProductFilter({ activeFilter, onFilterChange }: ProductFilterProps) {
   const filters = [
-    { id: 'popular', label: 'Populares' },
-    { id: 'new', label: 'Novidades' },
-    { id: 'sale', label: 'Ofertas' },
+    { id: 'populares', label: 'Populares' },
+    { id: 'novidades', label: 'Novidades' },
+    { id: 'ofertas', label: 'Ofertas' },
   ];
 
   return (
     <Box 
       sx={{ 
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '4vw',
-        mt: 1.5,
-        mb: 1.5
+        width: '100% !important',
+        display: 'flex !important',
+        justifyContent: 'center !important',
+        alignItems: 'center !important',
+        gap: '4vw !important',
+        marginTop: '1.5vh !important',
+        marginBottom: '1.5vh !important',
       }}
     >
       {filters.map((filter) => (
-        <Button
+        <Box
+          component="button"
           key={filter.id}
+          id={filter.id}
           onClick={() => onFilterChange(filter.id)}
+          className="botões-limpos"
           sx={{
-            fontSize: 18,
-            color: activeFilter === filter.id ? 'primary.main' : 'text.primary',
-            fontWeight: activeFilter === filter.id ? 600 : 400,
+            border: 'none !important',
+            fontSize: '18px !important',
+            fontWeight: '400 !important',
+            backgroundColor: 'white !important',
+            cursor: 'pointer !important',
+            color: activeFilter === filter.id ? '#518432 !important' : 'inherit !important',
+            fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important",
             '&:hover': {
-              color: 'primary.main'
+              color: '#518432 !important'
             }
           }}
         >
           {filter.label}
-        </Button>
+        </Box>
       ))}
     </Box>
   );
