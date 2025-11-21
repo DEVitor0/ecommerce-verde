@@ -1,57 +1,71 @@
-import { Box, IconButton } from '@mui/material';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+'use client';
+
+import { Box } from '@mui/material';
 
 interface CarouselControlsProps {
   onPrevious: () => void;
   onNext: () => void;
 }
 
-// Carousel navigation arrows
+// Carousel navigation arrows matching legacy styles exactly
 export function CarouselControls({ onPrevious, onNext }: CarouselControlsProps) {
   return (
     <Box 
+      className="mover-produtos-principais"
       sx={{ 
-        width: '100%',
-        height: 1,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        top: '-4vh',
-        mb: 3
+        width: '100% !important',
+        height: '1px !important',
+        display: 'flex !important',
+        justifyContent: 'center !important',
+        position: 'relative !important',
+        top: '-4vh !important',
+        marginBottom: '3vh !important',
       }}
     >
-      <IconButton
+      <Box
         onClick={onPrevious}
+        className="setas-carrossel"
         sx={{ 
-          width: 26,
-          height: 26,
-          bgcolor: 'grey.300',
-          borderRadius: '50%',
-          mr: 1.25,
+          width: '20px !important',
+          height: '20px !important',
+          padding: '3px !important',
+          marginRight: '10px !important',
+          borderRadius: '100% !important',
+          cursor: 'pointer !important',
+          display: 'flex !important',
+          justifyContent: 'center !important',
+          alignItems: 'center !important',
+          backgroundColor: 'transparent !important',
+          border: '1px solid #ccc !important',
           '&:hover': {
-            bgcolor: 'grey.500'
+            backgroundColor: '#f0f0f0 !important',
           }
         }}
       >
-        <ArrowBackIosIcon sx={{ fontSize: 16 }} />
-      </IconButton>
+        <i className="fa-solid fa-angle-left" style={{ fontSize: '12px', color: '#666' }}></i>
+      </Box>
       
-      <IconButton
+      <Box
         onClick={onNext}
+        className="setas-carrossel"
         sx={{ 
-          width: 26,
-          height: 26,
-          bgcolor: 'grey.300',
-          borderRadius: '50%',
+          width: '20px !important',
+          height: '20px !important',
+          padding: '3px !important',
+          borderRadius: '100% !important',
+          cursor: 'pointer !important',
+          display: 'flex !important',
+          justifyContent: 'center !important',
+          alignItems: 'center !important',
+          backgroundColor: 'transparent !important',
+          border: '1px solid #ccc !important',
           '&:hover': {
-            bgcolor: 'grey.500'
+            backgroundColor: '#f0f0f0 !important',
           }
         }}
       >
-        <ArrowForwardIosIcon sx={{ fontSize: 16 }} />
-      </IconButton>
+        <i className="fa-solid fa-angle-right" style={{ fontSize: '12px', color: '#666' }}></i>
+      </Box>
     </Box>
   );
 }

@@ -1,7 +1,6 @@
 import { Box, Button } from '@mui/material';
 import { useState } from 'react';
 
-// Category navigation bar
 export function CategoryBar() {
   const [activeCategory, setActiveCategory] = useState('Plantas de Interior');
   

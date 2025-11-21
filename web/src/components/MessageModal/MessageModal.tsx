@@ -11,7 +11,6 @@ interface MessageModalProps {
   message: string;
 }
 
-// Message modal for success/error feedback
 export function MessageModal({ open, onClose, type, title, message }: MessageModalProps) {
   return (
     <Dialog 
