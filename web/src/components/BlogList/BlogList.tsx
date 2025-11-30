@@ -5,25 +5,27 @@ interface BlogListProps {
   children: ReactNode;
 }
 
-// Container for blog cards
+// Container for blog cards - horizontal layout matching legacy
 export function BlogList({ children }: BlogListProps) {
   return (
     <Box 
       sx={{ 
         width: '100%',
+        height: 'auto',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
-        mt: 3
+        alignItems: 'center'
       }}
     >
       <Box 
         sx={{ 
-          width: { xs: '100%', md: '80%' },
+          width: '80%',
+          height: 'auto',
           display: 'flex',
-          justifyContent: { xs: 'flex-start', md: 'center' },
+          justifyContent: 'center',
           alignItems: 'center',
-          flexWrap: 'wrap'
+          flexDirection: 'row',
+          mt: '3vh'
         }}
       >
         {children}

@@ -14,30 +14,36 @@ export function CategoryBar() {
 
   return (
     <Box 
+      id="navegação-filtros"
       sx={{ 
-        width: 120,
-        height: 'auto',
-        display: 'flex',
-        flexDirection: 'column'
+        width: '120px !important',
+        height: 'auto !important',
       }}
     >
-      {categories.map((category) => (
-        <Button
+      {categories.map((category, index) => (
+        <Box
+          component="button"
           key={category}
           onClick={() => setActiveCategory(category)}
+          className={`filtros-produtos ${index === 0 ? 'navegação-produtos' : ''}`}
           sx={{ 
-            py: 0.5,
-            px: 2,
-            color: activeCategory === category ? 'primary.dark' : 'text.primary',
-            textAlign: 'left',
-            justifyContent: 'flex-start',
+            padding: '.5vw 2vh !important',
+            color: activeCategory === category ? '#47941a !important' : '#242323 !important',
+            textAlign: 'left !important',
+            border: 'none !important',
+            backgroundColor: 'transparent !important',
+            cursor: 'pointer !important',
+            fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important",
+            fontSize: '15px !important',
+            width: '100% !important',
+            display: 'block !important',
             '&:hover': {
-              color: 'primary.main'
+              color: '#518432 !important',
             }
           }}
         >
           {category}
-        </Button>
+        </Box>
       ))}
     </Box>
   );

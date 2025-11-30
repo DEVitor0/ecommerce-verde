@@ -14,16 +14,17 @@ export function ProductList({ children }: ProductListProps) {
 
   return (
     <Box 
-      id="seção-produtos"
+      className="container-plantas"
       sx={{ 
         width: '100% !important',
         height: 'auto !important',
-        display: 'grid !important',
-        justifyItems: 'center !important',
+        display: 'flex !important',
+        justifyContent: 'center !important',
+        alignItems: 'center !important',
+        flexWrap: 'wrap !important',
       }}
     >
       <Box
-        className="container-plantas container-populares"
         sx={{
           width: '100% !important',
           height: 'auto !important',
@@ -38,7 +39,6 @@ export function ProductList({ children }: ProductListProps) {
       
       {secondRow.length > 0 && (
         <Box
-          className="container-plantas container-populares"
           sx={{
             width: '100% !important',
             height: 'auto !important',

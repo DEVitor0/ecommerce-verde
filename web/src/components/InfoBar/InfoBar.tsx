@@ -15,36 +15,37 @@ export function InfoBar() {
 
   return (
     <Box 
+      id="informativos"
       sx={{ 
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: 3,
-        my: 3
+        marginTop: '1.5vh !important',
+        marginBottom: '5vh !important',
+        width: '100% !important',
+        height: 'auto !important',
+        display: 'flex !important',
+        justifyContent: 'center !important',
+        alignItems: 'center !important',
+        flexDirection: 'row !important',
       }}
     >
       {infoItems.map((item, index) => (
         <Box 
           key={index}
+          className="container-informativos"
           sx={{ 
-            display: 'flex',
-            alignItems: 'center',
-            pr: 2.5,
-            height: 60,
-            borderRight: index < infoItems.length - 1 ? '1px solid' : 'none',
-            borderColor: 'divider'
+            paddingRight: '20px !important',
+            display: 'flex !important',
+            alignItems: 'center !important',
+            borderRight: index < infoItems.length - 1 ? '1px solid #AAAAAA !important' : 'none !important',
           }}
         >
-          <Box sx={{ fontSize: 26, mr: 1.25, ml: 1.25, color: 'primary.dark' }}>
+          <Box sx={{ fontSize: '26px !important', paddingRight: '10px !important', paddingLeft: '10px !important', color: '#47941a !important' }}>
             {item.icon}
           </Box>
           <Box>
-            <Typography variant="body1" sx={{ fontSize: 18, fontWeight: 600 }}>
+            <Typography component="p" sx={{ fontSize: '18px !important', fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important", margin: '0 !important' }}>
               {item.title}
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography component="p" sx={{ color: '#616060 !important', fontFamily: "'Open Sans', 'Helvetica Neue', sans-serif !important", margin: '0 !important' }}>
               {item.subtitle}
             </Typography>
           </Box>

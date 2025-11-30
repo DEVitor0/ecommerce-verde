@@ -31,7 +31,7 @@ export function Recommendation({ items }: RecommendationProps) {
         width: '100%',
         height: 400,
         margin: 'auto',
-        backgroundImage: 'url(/src/assets/img/fundos/testibg.png)',
+        backgroundImage: 'url(/assets/img/fundos/testibg.png)',
         backgroundSize: 'cover',
         backgroundPosition: 'top',
         display: 'flex',

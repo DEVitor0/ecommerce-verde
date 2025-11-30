@@ -47,16 +47,22 @@ export default function HomePage() {
 
   const recommendations = [
     {
-      name: 'Vitor Moreira',
+      name: 'Carlos Oliveira',
       role: 'Cliente',
-      message: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate enim possimus porro laudantium libero repellat provident dolores Doloribus ad, consectetur velit dolor voluptates molestias harum debitis ratione.',
-      image: '/assets/img/pessoas/pessoa1.jpg',
+      message: 'Vivamus a finibus ac ipsum porttitor egestas ut sit amet nulla. Nunc facilisis ipsum ut nisl tempus, non feugiat justo semper. Vestibul ac justo justo. Proin pharetra, purus non vehicula sagittis, nunc varius porttitor ligula, in volutpat justo. ...',
+      image: '/assets/img/pessoas/pessoa3.jpg',
+    },
+    {
+      name: 'João Santos',
+      role: 'Cliente',
+      message: 'Integer a semper ac purus ultrices dictum ut sit amet massa. Donec elementum purus ut ante blandit, non posuere justo viverra. Aliquam ac justo justo. Nulla facilisi, velit non posuere cursus, nunc tellus ultrices sodales, in eleifend justo. ...',
+      image: '/assets/img/pessoas/pessoa2.jpg',
     },
     {
       name: 'Maria Silva',
       role: 'Cliente',
-      message: 'Excelente serviço e produtos de qualidade. Recomendo para todos que buscam plantas saudáveis e bonitas.',
-      image: '/assets/img/pessoas/pessoa2.jpg',
+      message: 'Quisque a tempus ac magna gravida pretium ut sit eros magna. Fusce suscipit magna ut elit gravida, non volutpat justo semper. Aliquam ac justo justo. Nam dictumst, lorem non convallis elementum, nunc tellus gravida lectus, in lobortis ipsum. ...',
+      image: '/assets/img/pessoas/pessoa1.jpg',
     },
   ];
 
@@ -121,9 +127,31 @@ export default function HomePage() {
         <InfoBar />
 
         <SectionTitle title="Categoria e Produtos" subtitle="Descubra, Explore e Surpreenda-se" />
-        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, gap: 4 }}>
-          <CategoryBar />
-          <ProductList>
+        <Box 
+          id="container-maior-categorias"
+          sx={{ 
+            width: '100% !important', 
+            height: 'auto !important', 
+            display: 'flex !important', 
+            justifyContent: 'center !important', 
+            alignItems: 'center !important', 
+            marginBottom: '3vh !important', 
+            marginTop: '3vh !important' 
+          }}
+        >
+          <Box
+            id="container-categorias"
+            sx={{
+              width: 'auto !important',
+              height: 'auto !important',
+              display: 'flex !important',
+              alignItems: 'flex-start !important',
+              justifyContent: 'center !important',
+              gap: '20px !important',
+            }}
+          >
+            <CategoryBar />
+            <ProductList>
             {products.slice(0, 3).map((product) => (
               <ProductCard
                 key={product.id}
@@ -133,6 +161,7 @@ export default function HomePage() {
               />
             ))}
           </ProductList>
+          </Box>
         </Box>
 
         <Recommendation items={recommendations} />
