@@ -1,0 +1,54 @@
+.box {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 36px 28px 28px;
+  text-align: center;
+}
+.icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #fde7e5;
+  color: var(--coral-700);
+  font-size: 1.9rem;
+  animation: heart-beat 1.6s ease-in-out 0.3s 2;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+.text {
+  color: var(--stone-700);
+  max-width: 34ch;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+@keyframes heart-beat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.18);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.12);
+  }
+}
