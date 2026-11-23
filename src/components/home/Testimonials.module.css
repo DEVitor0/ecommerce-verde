@@ -1,0 +1,117 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(40px, 6vw, 72px) 0;
+  margin-top: clamp(20px, 4vw, 40px);
+}
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.bg img {
+  object-fit: cover;
+  object-position: top;
+}
+.inner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 8px;
+}
+.stage {
+  display: grid;
+  justify-items: center;
+  min-height: 250px;
+  width: min(640px, 100%);
+}
+.slide {
+  grid-area: 1 / 1;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  align-content: start;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s var(--ease-out),
+    visibility 0s 0.6s;
+}
+.slide[data-active="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.avatar {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 4px var(--white),
+    0 10px 24px -10px rgb(28 61 14 / 0.5);
+}
+.name {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--green-400);
+}
+.role {
+  color: var(--stone-600);
+}
+.quote {
+  margin-top: 10px;
+  font-size: 1.05rem;
+  max-width: 60ch;
+}
+.dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ccc;
+  transition:
+    background-color 0.3s,
+    width 0.4s var(--ease-out),
+    border-radius 0.4s;
+  overflow: hidden;
+}
+.dot:hover {
+  background: var(--stone-400);
+}
+.dot[aria-current="true"] {
+  width: 34px;
+  border-radius: 6px;
+  background: #ccc;
+}
+.dot[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #3a3a3a;
+  transform-origin: left;
+  animation: progress var(--ms, 6000ms) linear forwards;
+}
+.dot[data-paused="true"]::after {
+  animation-play-state: paused;
+}
+@keyframes progress {
+  from {
+    transform: scaleX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot[aria-current="true"]::after {
+    animation: none;
+  }
+}

@@ -1,0 +1,106 @@
+.region {
+  position: fixed;
+  z-index: 300;
+  left: 16px;
+  bottom: 16px;
+  display: grid;
+  gap: 10px;
+  width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+.toast {
+  pointer-events: auto;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px 14px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-pop);
+  border-left: 4px solid var(--green-500);
+  animation: toast-in 0.45s var(--ease-spring) both;
+}
+.error {
+  border-left-color: var(--coral);
+}
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--green-100);
+  color: var(--green-600);
+}
+.error .icon {
+  background: #fde7e5;
+  color: var(--coral-700);
+}
+.text {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.action {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--green-600);
+  white-space: nowrap;
+}
+.action:hover {
+  text-decoration: underline;
+}
+.close {
+  color: var(--stone-600);
+  padding: 4px;
+  border-radius: 50%;
+}
+.close:hover {
+  color: var(--ink);
+  background: var(--stone-100);
+}
+.bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background: var(--green-400);
+  transform-origin: left;
+  animation: toast-bar var(--toast-ms, 4500ms) linear forwards;
+}
+.toast:hover .bar {
+  animation-play-state: paused;
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(-40px) scale(0.95);
+  }
+}
+@keyframes toast-bar {
+  to {
+    transform: scaleX(0);
+  }
+}
+@media (max-width: 900px) {
+  .region {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 12px;
+    transform: translateX(-50%);
+  }
+  .toast {
+    animation-name: toast-in-top;
+  }
+}
+@keyframes toast-in-top {
+  from {
+    opacity: 0;
+    transform: translateY(-24px) scale(0.95);
+  }
+}

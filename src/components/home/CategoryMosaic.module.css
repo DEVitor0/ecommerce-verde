@@ -1,0 +1,83 @@
+.section {
+  padding: clamp(18px, 2.4vw, 32px) 0 clamp(28px, 5vw, 56px);
+}
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-areas: "a b c" "a d e";
+  grid-auto-rows: clamp(170px, 20vw, 250px);
+}
+.tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--stone-100);
+  isolation: isolate;
+}
+.tile:nth-child(1) {
+  grid-area: a;
+}
+.tile:nth-child(2) {
+  grid-area: b;
+}
+.tile:nth-child(3) {
+  grid-area: c;
+}
+.tile:nth-child(4) {
+  grid-area: d;
+}
+.tile:nth-child(5) {
+  grid-area: e;
+}
+.link {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.tile img {
+  object-fit: cover;
+  object-position: right bottom;
+  transition: transform 0.9s var(--ease-out);
+}
+.link:hover img,
+.link:focus-visible img {
+  transform: scale(1.07);
+}
+.label {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--ink);
+  /* Halo claro: mantém o rótulo legível quando cruza as folhas da foto. */
+  text-shadow:
+    0 0 6px rgb(255 255 255 / 0.95),
+    0 0 14px rgb(255 255 255 / 0.8);
+}
+.label span {
+  background: linear-gradient(var(--green-500), var(--green-500)) 0 100% / 0 2px no-repeat;
+  padding-bottom: 3px;
+  transition: background-size 0.45s var(--ease-out);
+}
+.link:hover .label span,
+.link:focus-visible .label span {
+  background-size: 100% 2px;
+}
+@media (max-width: 760px) {
+  .label {
+    font-size: 1.02rem;
+    top: 12px;
+    left: 14px;
+  }
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "a a" "b c" "d e";
+    grid-template-rows: 240px 170px 170px;
+    grid-auto-rows: 170px;
+  }
+}

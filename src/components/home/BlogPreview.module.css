@@ -1,0 +1,20 @@
+.section {
+  padding: clamp(28px, 5vw, 56px) 0 clamp(40px, 6vw, 72px);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 3vw, 36px);
+  max-width: 960px;
+  margin-inline: auto;
+}
+.more {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+}
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

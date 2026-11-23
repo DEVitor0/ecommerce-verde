@@ -1,0 +1,228 @@
+.page {
+  padding: clamp(20px, 4vw, 44px) 0 clamp(40px, 6vw, 80px);
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-bottom: 22px;
+}
+.title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.4rem);
+}
+.count {
+  color: var(--stone-600);
+}
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: clamp(20px, 3vw, 44px);
+  align-items: start;
+}
+.sidebar {
+  position: sticky;
+  top: 150px;
+  display: grid;
+  gap: 22px;
+}
+.search {
+  position: relative;
+}
+.search .input {
+  padding-right: 44px;
+  border-radius: var(--radius-pill);
+}
+.search button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--green-600);
+}
+.search button:hover {
+  background: var(--green-50);
+}
+.group h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--stone-200);
+  font-size: 0.9rem;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.25s var(--ease-spring);
+}
+.chip:hover {
+  border-color: var(--green-500);
+  color: var(--green-600);
+  transform: translateY(-2px);
+}
+.chip[aria-current="true"] {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: var(--white);
+}
+.list {
+  display: grid;
+  gap: 2px;
+}
+.row {
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  transition:
+    background-color 0.2s,
+    padding-left 0.25s var(--ease-out);
+}
+.row:hover {
+  background: var(--green-50);
+  padding-left: 14px;
+}
+.row[aria-current="true"] {
+  background: var(--green-100);
+  color: var(--green-700);
+  font-weight: 700;
+}
+.clear {
+  justify-self: start;
+  font-weight: 600;
+  color: var(--green-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.active {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--green-100);
+  color: var(--green-700);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+.pill:hover {
+  background: var(--green-300);
+}
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+.sort select {
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 1.5px solid var(--stone-200);
+  border-radius: 8px;
+  background: var(--white);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px clamp(14px, 2vw, 28px);
+}
+.item {
+  animation: item-in 0.55s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 55ms);
+}
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 60px 16px;
+  text-align: center;
+  background: var(--green-50);
+  border-radius: var(--radius-md);
+}
+.empty h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+.filterToggle {
+  display: none;
+}
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+}
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+  }
+  .filterToggle {
+    display: block;
+  }
+  .filterToggle summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 11px 18px;
+    border: 1.5px solid var(--green-600);
+    color: var(--green-600);
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    text-align: center;
+  }
+  .filterToggle summary::-webkit-details-marker {
+    display: none;
+  }
+  .filterToggle[open] summary {
+    background: var(--green-600);
+    color: var(--white);
+  }
+  .filterToggle > div {
+    margin-top: 18px;
+  }
+  .desktopOnly {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .grid {
+    gap: 22px 10px;
+  }
+}

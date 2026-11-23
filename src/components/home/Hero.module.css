@@ -1,0 +1,142 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: clamp(460px, 67vh, 720px);
+  overflow: hidden;
+  background: #ececec;
+}
+.bg {
+  position: absolute;
+  inset: -6% 0;
+  z-index: -2;
+  animation: settle 2.2s var(--ease-out) both;
+}
+.bg img {
+  object-fit: cover;
+  object-position: 78% center;
+}
+@supports (animation-timeline: scroll()) {
+  .bg {
+    animation:
+      settle 2.2s var(--ease-out) both,
+      drift linear both;
+    animation-timeline: auto, scroll(root);
+    animation-range:
+      normal,
+      0 90vh;
+  }
+}
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0) 62%);
+}
+.content {
+  padding-left: 8vw;
+  padding-right: var(--gutter);
+  margin-bottom: 8vh;
+  display: grid;
+  justify-items: start;
+}
+.offer {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 1.2rem + 3.6vw, 3.9rem);
+  line-height: 1.1;
+  color: var(--green-500);
+  animation: wipe 0.9s var(--ease-out) 0.25s both;
+}
+.title {
+  font-size: clamp(2.2rem, 1.2rem + 3.6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+}
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+.mask > span {
+  display: block;
+  animation: rise 0.95s var(--ease-out) 0.5s both;
+}
+.text {
+  max-width: 34ch;
+  margin-top: 8px;
+  font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.1rem);
+  animation: fade-up 0.8s var(--ease-out) 0.85s both;
+}
+.line {
+  width: 1px;
+  height: clamp(34px, 6vh, 60px);
+  margin: 12px 0 10px 3vw;
+  background: var(--stone-600);
+  transform-origin: top;
+  animation: grow 0.7s var(--ease-out) 1.05s both;
+}
+.cta {
+  animation: pop-in 0.7s var(--ease-spring) 1.35s both;
+}
+@keyframes settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes drift {
+  to {
+    transform: translateY(8%);
+  }
+}
+@keyframes wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+@keyframes grow {
+  from {
+    transform: scaleY(0);
+  }
+}
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 720px) {
+  .veil {
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.85), rgb(255 255 255 / 0.4));
+  }
+  .content {
+    padding-left: var(--gutter);
+    margin-bottom: 0;
+  }
+  .line {
+    margin-left: 8px;
+  }
+  .bg img {
+    object-position: 70% center;
+  }
+}

@@ -1,0 +1,249 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  transition: box-shadow 0.3s ease;
+}
+.header[data-scrolled="true"] {
+  box-shadow: 0 8px 24px -16px rgb(0 0 0 / 0.35);
+}
+.top {
+  border-bottom: 1px solid var(--stone-400);
+}
+.topInner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 72px;
+  transition: height 0.35s var(--ease-out);
+}
+.header[data-scrolled="true"] .topInner {
+  height: 58px;
+}
+.prefs {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.prefs > * + * {
+  padding-left: 18px;
+  border-left: 1px solid var(--stone-400);
+}
+.phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.phone:hover {
+  color: var(--green-500);
+}
+.logo {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 112px;
+  margin-bottom: -26px;
+  background: var(--white);
+  border-radius: 0 0 50% 50% / 0 0 24% 24%;
+  transition:
+    width 0.35s var(--ease-out),
+    margin 0.35s var(--ease-out);
+}
+
+.header[data-scrolled="true"] .logo {
+  width: 78px;
+  margin-bottom: -22px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s var(--ease-spring);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+}
+.iconWrap {
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 3px;
+  right: 1px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--green-600);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  animation: pop 0.45s var(--ease-spring);
+  pointer-events: none;
+}
+.account {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.95rem;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+.account:hover {
+  background: var(--green-50);
+  color: var(--green-600);
+}
+.accountName {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 34px);
+  padding: 38px 0 12px;
+  transition: padding 0.35s var(--ease-out);
+}
+.header[data-scrolled="true"] .nav {
+  padding-top: 14px;
+}
+.navLink {
+  position: relative;
+  font-size: 0.95rem;
+  padding: 6px 4px;
+}
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 2px;
+  height: 2px;
+  background: var(--green-400);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+/* Ícones do topo maiores, para facilitar o toque e a leitura. */
+.actions :global(.icon-btn),
+.menuBtn {
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+}
+.account svg {
+  font-size: 1.5rem;
+}
+.menuBtn {
+  display: none;
+}
+.mobile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.mobileHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--stone-100);
+}
+.mobileHead img {
+  width: 70px;
+  height: auto;
+}
+.mobileBody {
+  padding: 12px 16px 24px;
+  overflow: auto;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+.mobileGroup {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--stone-600);
+  padding: 14px 10px 4px;
+}
+.mobileLink {
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition:
+    background-color 0.2s,
+    padding-left 0.25s var(--ease-out);
+}
+.mobileLink:hover,
+.mobileLink[aria-checked="true"] {
+  background: var(--green-50);
+  color: var(--green-600);
+  padding-left: 16px;
+}
+.mobileLink[aria-checked="true"] {
+  font-weight: 700;
+}
+@media (max-width: 960px) {
+  .topInner {
+    grid-template-columns: 1fr auto 1fr;
+    /* A linha do grid tem a altura da barra; o logo "vaza" para baixo sem empurrar os ícones. */
+    grid-template-rows: 100%;
+    height: 70px;
+  }
+  .header[data-scrolled="true"] .topInner {
+    height: 70px;
+  }
+  .prefs {
+    display: none;
+  }
+  .menuBtn {
+    display: inline-grid;
+    justify-self: start;
+    align-self: center;
+  }
+  /* A área em branco da logo é intencional: a imagem desce até a linha cruzar o meio dela. */
+  .logo {
+    width: 73px;
+    margin-bottom: 0;
+    margin-top: 8px;
+    margin-left: -75px;
+    align-self: start;
+  }
+
+  .header[data-scrolled="true"] .logo {
+    width: 73px;
+    margin-top: 8px;
+    margin-left: -75px;
+  }
+  .nav {
+    display: none;
+  }
+  .accountName {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .actions {
+    gap: 0;
+  }
+  .searchBtn {
+    display: none;
+  }
+}

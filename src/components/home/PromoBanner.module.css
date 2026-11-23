@@ -1,0 +1,72 @@
+.section {
+  padding: clamp(28px, 5vw, 56px) 0;
+}
+.wrap {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 3vw, 40px);
+}
+.image {
+  position: relative;
+  aspect-ratio: 1.35;
+  overflow: hidden;
+}
+.image img {
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+.image:hover img {
+  transform: scale(1.05);
+}
+.badge {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.frame {
+  width: min(300px, 46%);
+  padding: 15px;
+  border: 2px solid var(--white);
+  aspect-ratio: 1.8;
+}
+.frame > div {
+  height: 100%;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  background: var(--white);
+  text-align: center;
+  padding: 8px;
+}
+.frame h3 {
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 1rem + 1.6vw, 2.2rem);
+}
+.off {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem);
+}
+.off span {
+  color: var(--green-500);
+}
+.soon {
+  text-transform: uppercase;
+  font-size: clamp(0.7rem, 0.65rem + 0.2vw, 0.85rem);
+}
+@media (max-width: 640px) {
+  .wrap {
+    grid-template-columns: 1fr;
+  }
+  .image {
+    aspect-ratio: 1.45;
+  }
+  .frame {
+    width: min(290px, 80%);
+  }
+}

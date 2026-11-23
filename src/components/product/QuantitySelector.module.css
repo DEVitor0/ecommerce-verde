@@ -1,0 +1,33 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid var(--stone-200);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+.button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 0.75rem;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+.button:hover:not(:disabled) {
+  background: var(--green-50);
+  color: var(--green-600);
+}
+.button:disabled {
+  opacity: 0.35;
+}
+.value {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.value[data-bump] {
+  animation: pop 0.3s var(--ease-spring);
+}

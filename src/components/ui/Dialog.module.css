@@ -1,0 +1,118 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  background: rgb(10 20 6 / 0.55);
+  backdrop-filter: blur(2px);
+  animation: fade-in 0.25s ease both;
+}
+.backdrop[data-state="closed"] {
+  animation: fade-out 0.28s ease both;
+}
+.center {
+  place-items: center;
+  padding: 16px;
+}
+.drawer {
+  justify-items: end;
+}
+.drawerLeft {
+  justify-items: start;
+}
+.top {
+  align-items: start;
+  justify-items: center;
+  padding: 12vh 16px 16px;
+}
+.panel {
+  position: relative;
+  background: var(--white);
+  max-height: 100%;
+  overflow: auto;
+  outline: none;
+}
+.center .panel {
+  width: min(100%, var(--dialog-width, 460px));
+  border-radius: 16px;
+  box-shadow: var(--shadow-pop);
+  animation: panel-pop 0.38s var(--ease-spring) both;
+}
+.center[data-state="closed"] .panel {
+  animation: panel-out 0.26s ease both;
+}
+.drawer .panel {
+  width: min(100%, 440px);
+  height: 100%;
+  box-shadow: -18px 0 40px -20px rgb(0 0 0 / 0.35);
+  animation: slide-in 0.38s var(--ease-out) both;
+}
+.drawer[data-state="closed"] .panel {
+  animation: slide-out 0.28s ease both;
+}
+.top .panel {
+  width: min(100%, 640px);
+  border-radius: 16px;
+  box-shadow: var(--shadow-pop);
+  animation: panel-drop 0.35s var(--ease-out) both;
+}
+.top[data-state="closed"] .panel {
+  animation: panel-out 0.24s ease both;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes panel-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.92);
+  }
+}
+@keyframes panel-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+}
+@keyframes panel-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes slide-out {
+  to {
+    transform: translateX(100%);
+  }
+}
+.drawerLeft .panel {
+  width: min(100%, 360px);
+  height: 100%;
+  box-shadow: 18px 0 40px -20px rgb(0 0 0 / 0.35);
+  animation: slide-in-left 0.38s var(--ease-out) both;
+}
+.drawerLeft[data-state="closed"] .panel {
+  animation: slide-out-left 0.28s ease both;
+}
+@keyframes slide-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+}
+@keyframes slide-out-left {
+  to {
+    transform: translateX(-100%);
+  }
+}

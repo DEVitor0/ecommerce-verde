@@ -1,0 +1,251 @@
+/* Reprodução fiel da tela de login do projeto original (Poppins, campos com linha inferior, verde #5aa802). */
+.page {
+  --cor-padrao: #5aa802;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color: var(--cor-padrao);
+  font-family: "Poppins", sans-serif;
+}
+.page ::selection {
+  background: var(--cor-padrao);
+  color: #fff;
+}
+.card {
+  width: 100%;
+  max-width: 850px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  animation: card-in 0.6s var(--ease-out) both;
+}
+.form {
+  flex: none;
+  width: 310px;
+  max-width: 100%;
+}
+.title {
+  position: relative;
+  padding-bottom: 6px;
+  font-size: 24px;
+  font-weight: 500;
+  color: #333;
+}
+.title a {
+  color: #585757;
+  transition: color 0.3s ease;
+}
+.title a:hover {
+  color: #4d8f03;
+}
+.title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 25px;
+  background: var(--cor-padrao);
+  animation: bar 0.7s var(--ease-out) 0.3s both;
+}
+.box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin: 10px 0 2px;
+}
+.box > svg:first-child {
+  position: absolute;
+  left: 0;
+  color: var(--cor-padrao);
+  font-size: 17px;
+}
+.box input {
+  width: 100%;
+  height: 100%;
+  padding: 0 34px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  transition: border-color 0.3s ease;
+}
+.box input::placeholder {
+  font-weight: 400;
+  color: #757575;
+}
+.box input:focus {
+  border-color: var(--cor-padrao);
+}
+.box input[aria-invalid="true"] {
+  border-color: #db0c0c;
+}
+.eye {
+  position: absolute;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: #757575;
+  border-radius: 50%;
+}
+.eye:hover {
+  color: var(--cor-padrao);
+}
+.eye:focus-visible,
+.box input:focus-visible,
+.submit:focus-visible,
+.social button:focus-visible {
+  outline: 3px solid var(--cor-padrao);
+  outline-offset: 3px;
+}
+.box input:focus-visible {
+  outline: none;
+}
+.fieldError {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #db0c0c;
+  animation: error-in 0.25s var(--ease-out);
+}
+.hint {
+  margin: 2px 0 4px;
+  font-size: 12.5px;
+  color: #757575;
+}
+.forgot a {
+  color: var(--cor-padrao);
+}
+.forgot a:hover {
+  text-decoration: underline;
+}
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 50px;
+  margin: 10px 0;
+  border: 0;
+  border-radius: 5px;
+  background: var(--cor-padrao);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  transition:
+    filter 0.2s ease,
+    transform 0.2s var(--ease-out);
+}
+.submit:hover:not(:disabled) {
+  filter: brightness(0.93);
+}
+.submit:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.submit:disabled {
+  opacity: 0.75;
+}
+.spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  animation: spin 0.7s linear infinite;
+}
+.alert,
+.ok {
+  margin: 4px 0 8px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+  animation: error-in 0.3s var(--ease-out);
+}
+.alert {
+  background: rgb(219, 12, 12);
+}
+.ok {
+  background: #3f7a16;
+}
+.or {
+  margin: 3px;
+  text-align: center;
+  font-size: 18px;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.social button {
+  margin: 0 10px 10px;
+  font-size: 30px;
+  line-height: 1;
+  color: #000;
+  transition:
+    color 0.2s ease,
+    transform 0.3s var(--ease-spring);
+}
+.social button:first-child {
+  font-size: 37px;
+}
+.social button:hover {
+  color: var(--cor-padrao);
+  transform: translateY(-3px);
+}
+.switch a {
+  color: var(--cor-padrao);
+}
+.switch a:hover {
+  text-decoration: underline;
+}
+.imageSide {
+  width: 50%;
+}
+.imageSide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+@keyframes bar {
+  from {
+    width: 0;
+  }
+}
+/* Telas pequenas, como no original: a imagem sobe e o formulário vem abaixo. */
+@media (max-width: 779px) {
+  .card {
+    max-width: 450px;
+    flex-direction: column-reverse;
+  }
+  .imageSide {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .form {
+    width: 100%;
+  }
+}
