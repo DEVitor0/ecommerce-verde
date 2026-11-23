@@ -1,0 +1,136 @@
+.newsletter {
+  border-top: 1px solid var(--stone-200);
+  background: var(--green-50);
+}
+.newsletterInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 40px;
+  padding: 26px 0;
+}
+.newsletterTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.newsletterTitle svg {
+  color: var(--green-600);
+  font-size: 1.3rem;
+}
+.form {
+  display: grid;
+  gap: 6px;
+}
+.formRow {
+  display: flex;
+  background: var(--white);
+  border-radius: var(--radius-pill);
+  padding: 4px 4px 4px 18px;
+  border: 1.5px solid var(--stone-200);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  min-width: min(360px, 100%);
+}
+.formRow:focus-within {
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 4px rgb(81 132 50 / 0.18);
+}
+.formRow input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1rem;
+}
+.success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green-700);
+  font-weight: 600;
+  animation: error-in 0.4s var(--ease-out);
+}
+.success svg {
+  color: var(--green-600);
+}
+.footer {
+  color: var(--ink);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 32px;
+  padding: 44px 0 28px;
+}
+.col h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.col ul {
+  display: grid;
+  gap: 10px;
+}
+.col a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition:
+    background-size 0.3s var(--ease-out),
+    color 0.2s;
+}
+.col a:hover {
+  background-size: 100% 1px;
+  color: var(--green-600);
+}
+.contact {
+  display: grid;
+  gap: 10px;
+  font-style: normal;
+}
+.contact p {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+.contact svg {
+  margin-top: 5px;
+  color: var(--green-600);
+  flex: none;
+}
+.social {
+  display: flex;
+  gap: 10px;
+}
+.social a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--stone-200);
+  font-size: 1.05rem;
+  background-image: none;
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    transform 0.3s var(--ease-spring),
+    border-color 0.25s;
+}
+.social a:hover {
+  background: var(--green-600);
+  border-color: var(--green-600);
+  color: var(--white);
+  transform: translateY(-4px) rotate(-6deg);
+}
+.bottom {
+  text-align: center;
+  padding: 20px 0 28px;
+  border-top: 1px solid var(--stone-200);
+  font-size: 0.9rem;
+  color: var(--stone-700);
+}
