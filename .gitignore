@@ -1,1 +1,27 @@
-node_module
+node_modules
+.next
+out
+coverage
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+.DS_Store
+
+.swc/
+
+.swc/
+
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Build and cache
+.swc/
+coverage/
+
+# Environment variables
+.env*
+!.env.example
