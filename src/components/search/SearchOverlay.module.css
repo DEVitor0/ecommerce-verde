@@ -1,0 +1,111 @@
+.box {
+  padding: 18px;
+  display: grid;
+  gap: 14px;
+}
+.form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.form svg {
+  position: absolute;
+  left: 16px;
+  color: var(--green-600);
+}
+.form .input {
+  padding-left: 44px;
+  min-height: 52px;
+  font-size: 1.05rem;
+  border-radius: var(--radius-pill);
+}
+.results {
+  display: grid;
+  gap: 4px;
+  max-height: 50vh;
+  overflow: auto;
+}
+.result {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 14px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 12px;
+  transition:
+    background-color 0.2s,
+    transform 0.25s var(--ease-out);
+  animation: result-in 0.35s var(--ease-out) both;
+  animation-delay: calc(var(--i) * 40ms);
+}
+.result:hover,
+.result:focus-visible {
+  background: var(--green-50);
+  transform: translateX(4px);
+}
+.thumb {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background: var(--green-50);
+  overflow: hidden;
+}
+.thumb img {
+  object-fit: contain;
+  padding: 4px;
+}
+.name {
+  font-weight: 700;
+}
+.sci {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--stone-600);
+}
+.price {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.hint {
+  font-size: 0.85rem;
+  color: var(--stone-600);
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.chip {
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--green-50);
+  color: var(--green-700);
+  font-size: 0.9rem;
+  transition:
+    background-color 0.2s,
+    color 0.2s,
+    transform 0.25s var(--ease-spring);
+}
+.chip:hover {
+  background: var(--green-600);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+.empty {
+  padding: 12px 4px;
+  color: var(--stone-700);
+}
+.all {
+  justify-self: start;
+  font-weight: 600;
+  color: var(--green-600);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@keyframes result-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
