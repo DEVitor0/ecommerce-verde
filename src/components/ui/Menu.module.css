@@ -1,0 +1,83 @@
+.root {
+  position: relative;
+}
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  padding: 6px 4px;
+  position: relative;
+}
+.trigger::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 2px;
+  height: 2px;
+  background: var(--green-400);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease-out);
+}
+.trigger:hover::after,
+.trigger[aria-expanded="true"]::after {
+  transform: scaleX(1);
+}
+.chevron {
+  font-size: 0.8em;
+  transition: transform 0.3s var(--ease-out);
+}
+.trigger[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+.list {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 10px);
+  left: 50%;
+  translate: -50% 0;
+  min-width: 220px;
+  padding: 8px;
+  background: var(--white);
+  border-bottom: 2px solid var(--green-400);
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 12px 30px -10px rgb(0 0 0 / 0.28);
+  animation: menu-in 0.25s var(--ease-out) both;
+}
+.alignStart {
+  left: 0;
+  translate: 0 0;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  text-align: left;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    padding-left 0.2s var(--ease-out);
+}
+.item:hover,
+.item:focus-visible {
+  background: var(--green-50);
+  color: var(--green-600);
+  padding-left: 16px;
+}
+.item[aria-checked="true"] {
+  color: var(--green-600);
+  font-weight: 700;
+}
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
